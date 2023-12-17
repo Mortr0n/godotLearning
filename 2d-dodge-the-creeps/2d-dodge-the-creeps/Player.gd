@@ -8,8 +8,8 @@ var screen_size = Vector2.ZERO
 
 func _ready():
 	screen_size = get_viewport_rect().size
-
-	print(screen_size)
+	hide()
+#	print(screen_size)
 
 
 func _process(delta):
@@ -27,10 +27,13 @@ func _process(delta):
 #	Ensure player moves at constanct speed regardless of direction.  by pressing 2 keys you will have double the direction if we're using this += method of movement
 	if direction.length() > 0:
 		direction = direction.normalized()
-		$AnimatedSprite.play()
+		$AnimatedSprite.play() 
+		$PlayerMove.play()
 	else:
 		$AnimatedSprite.stop()
-	
+		$PlayerMove.stop()
+#		$PlayerMove.pitch_scale =.3
+#
 	position += direction * speed * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
@@ -52,6 +55,7 @@ func start(new_position):
 
 func _on_Player_body_entered(body):
 	hide()
+	$PlayerMove.stop()
 	$CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("hit")
 	
