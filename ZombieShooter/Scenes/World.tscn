@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Zombie.tscn" type="PackedScene" id=3]
+
+[node name="World" type="Node2D"]
+
+[node name="Block" type="Sprite" parent="."]
+position = Vector2( 527, 205 )
+texture = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 49, 43 )
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 0.389
+one_shot = true
+
+[node name="Zombie" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 439 )
+
+[node name="Zombie2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 815, 291 )
+
+[node name="Zombie3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 926, 122 )
+
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]
