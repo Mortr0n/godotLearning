@@ -4,12 +4,12 @@
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 10 )
+extents = Vector2( 10, 4 )
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CollisionShape2D
 
-
+#var collision: CollisionObject2D = $
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
@@ -23,6 +23,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+#func _on_CollisionShape2D_child_entered_tree(node)
+#	var collision = collision.get_collider	
+
+#var a = raycast.get_collider()
+#		if raycast.is_colliding() and a.has_method(\"die\"):
+#			a.die()
 "
 
 [node name="InitialBullet" type="Area2D"]
@@ -33,6 +41,9 @@ shape = SubResource( 1 )
 script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 363.713, 572.626, 8.73883, 20.562 )
+
+[connection signal="child_entered_tree" from="CollisionShape2D" to="CollisionShape2D" method="_on_CollisionShape2D_child_entered_tree"]

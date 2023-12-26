@@ -6,8 +6,9 @@ onready var player = get_parent()
 export var speed: int = 300
 
 
-
+signal player_fired_bullet(bullet, position, direction)
 onready var end_of_gun: Position2D = $EndOfGun
+onready var gun_direction: Position2D = $GunDirection
 export var Bullet: PackedScene
 
 var movement: Vector2 = Vector2()
@@ -37,6 +38,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	
 		#Original raycast shot for testing
 #		var a = raycast.get_collider()
 #		if raycast.is_colliding() and a.has_method("die"):
@@ -61,14 +63,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func shoot():
 	var bullet_instance = Bullet.instance()
-	add_child(bullet_instance)
-	bullet_instance.global_position = end_of_gun.global_position
-	var target = get_global_mouse_position()
-#	below line is the long form for getting the vector math for where the bullet should be going
-#	var direction_to_mouse = target - bullet_instance.global_position
-	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
-	bullet_instance.set_direction(direction_to_mouse)
-	
+	var direction = gun_direction.global_position - end_of_gun.global_position
+#	var target = get_global_mouse_position()
+#	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
+	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction)
 	
 	
 	
