@@ -36,8 +36,8 @@ func _physics_process(delta):
 		movement = move_and_slide(movement)
 		look_at(get_global_mouse_position())
 	
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+#	if Input.is_action_just_pressed("shoot"):
+#		shoot()
 	
 		#Original raycast shot for testing
 #		var a = raycast.get_collider()
@@ -63,7 +63,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func shoot():
 	var bullet_instance = Bullet.instance()
+#	When I normalized like he does in the video on the end of gun global position it caused all kinds of havoc.  I instead normalize the final number
 	var direction = gun_direction.global_position - end_of_gun.global_position
+	direction = direction.normalized()
 #	var target = get_global_mouse_position()
 #	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
 	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://davapt7p7g7hc"]
+
+[ext_resource type="PackedScene" uid="uid://beayahfl1qiio" path="res://Player/player.tscn" id="1_py2f4"]
+[ext_resource type="Texture2D" uid="uid://cho5114mq3xje" path="res://Background/seamless_try.png" id="2_1su7x"]
+[ext_resource type="Script" path="res://Background/InfiniteScrollingParallaxBG.gd" id="2_m2dv1"]
+[ext_resource type="Texture2D" uid="uid://bd8qv4omeckvm" path="res://Background/Stars.png" id="4_03fue"]
+[ext_resource type="Texture2D" uid="uid://c1866p78uxo4o" path="res://Background/Planets.png" id="5_nwi8y"]
+[ext_resource type="Texture2D" uid="uid://hqhd5qncc56p" path="res://Background/Meteors.png" id="6_nn1a5"]
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_py2f4")]
+
+[node name="InfiniteScrollingParallaxBG" type="ParallaxBackground" parent="."]
+script = ExtResource("2_m2dv1")
+
+[node name="BackGroundParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingParallaxBG"]
+unique_name_in_owner = true
+motion_mirroring = Vector2(3840, 6827)
+
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingParallaxBG/BackGroundParallaxLayer"]
+texture = ExtResource("2_1su7x")
+
+[node name="StarsParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingParallaxBG"]
+unique_name_in_owner = true
+motion_mirroring = Vector2(1080, 1920)
+
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingParallaxBG/StarsParallaxLayer"]
+texture = ExtResource("4_03fue")
+
+[node name="PlanetsParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingParallaxBG"]
+unique_name_in_owner = true
+motion_mirroring = Vector2(10000, 10000)
+
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingParallaxBG/PlanetsParallaxLayer"]
+texture = ExtResource("5_nwi8y")
+
+[node name="AsteroidParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingParallaxBG"]
+unique_name_in_owner = true
+motion_mirroring = Vector2(10000, 10000)
+
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingParallaxBG/AsteroidParallaxLayer"]
+texture = ExtResource("6_nn1a5")
