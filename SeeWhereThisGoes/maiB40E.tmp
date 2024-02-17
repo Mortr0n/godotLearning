@@ -14,21 +14,16 @@ position = Vector2(328, 178)
 
 [node name="InfiniteScrollingParallaxBG" type="ParallaxBackground" parent="."]
 script = ExtResource("2_m2dv1")
+speed = null
+direction = null
 
 [node name="BackGroundParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingParallaxBG"]
 unique_name_in_owner = true
 motion_mirroring = Vector2(3840, 6827)
 
-[node name="BackgroundSprite2D" type="Sprite2D" parent="InfiniteScrollingParallaxBG/BackGroundParallaxLayer"]
-unique_name_in_owner = true
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingParallaxBG/BackGroundParallaxLayer"]
 texture_repeat = 2
 position = Vector2(1924, 3407)
-texture = ExtResource("2_1su7x")
-
-[node name="BackgroundSprite2D2" type="Sprite2D" parent="InfiniteScrollingParallaxBG/BackGroundParallaxLayer"]
-unique_name_in_owner = true
-texture_repeat = 2
-position = Vector2(-5758, 3407)
 texture = ExtResource("2_1su7x")
 
 [node name="StarsParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingParallaxBG"]
