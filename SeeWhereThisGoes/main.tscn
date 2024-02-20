@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://davapt7p7g7hc"]
+[gd_scene load_steps=8 format=3 uid="uid://davapt7p7g7hc"]
 
 [ext_resource type="PackedScene" uid="uid://beayahfl1qiio" path="res://Player/player.tscn" id="1_py2f4"]
 [ext_resource type="Texture2D" uid="uid://cho5114mq3xje" path="res://Background/seamless_try.png" id="2_1su7x"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c1866p78uxo4o" path="res://Background/Planets.png" id="5_nwi8y"]
 [ext_resource type="Texture2D" uid="uid://hqhd5qncc56p" path="res://Background/Meteors.png" id="6_nn1a5"]
 [ext_resource type="PackedScene" uid="uid://bamoeidrooix" path="res://Enemy/enemy.tscn" id="7_3pqap"]
-[ext_resource type="PackedScene" uid="uid://dx26lbael3x2s" path="res://Components/VelocityComponent/velocity_component.tscn" id="8_g7a33"]
 
 [node name="Main" type="Node"]
 
@@ -67,5 +66,3 @@ region_rect = Rect2(1100, 2100, 0, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("7_3pqap")]
 position = Vector2(442, 355)
-
-[node name="VelocityComponent" parent="Enemy" instance=ExtResource("8_g7a33")]
